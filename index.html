@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теруар — крафтові сири та вино</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <a href="#main"
+        class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#f5f1ec] focus:px-4 focus:py-2 focus:text-[#1a1410]">Перейти до змісту</a>
+    <!-- HEADER (Tailwind) -->
+    <header class="border-b border-[#3d342c] bg-[#1a1410] font-['Inter',system-ui,sans-serif] text-[#f5f1ec]">
+        <div class="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-6 px-5 py-4">
+
+            <!-- Логотип -->
+            <a href="#"
+                class="flex items-center gap-3 rounded-md transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">
+                <img src="assets/icons/logo2.svg" alt="Terroir — логотип бренду"
+                    class="h-16 w-16 shrink-0 rounded-lg bg-[#f5f1ec] object-contain p-0.5">
+                <span class="flex flex-col">
+                    <span class="font-['Playfair_Display',Georgia,serif] text-2xl font-bold leading-none">Terroir</span>
+                    <span class="mt-1 text-xs text-[#a89d92]">Cheese &amp; Wine</span>
+                </span>
+            </a>
+
+            <!-- Десктопна навігація -->
+            <nav aria-label="Головна навігація" class="hidden md:flex md:items-center md:gap-6">
+                <a href="#catalog"
+                    class="rounded px-1 py-2 transition-colors duration-200 hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Каталог</a>
+                <a href="#featured-pairing"
+                    class="rounded px-1 py-2 transition-colors duration-200 hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Пари</a>
+                <a href="#" aria-label="Виробники (сторінка ще не створена)"
+                    class="rounded px-1 py-2 transition-colors duration-200 hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Виробники</a>
+                <a href="#" aria-label="Про нас (сторінка ще не створена)"
+                    class="rounded px-1 py-2 transition-colors duration-200 hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Про нас</a>
+            </nav>
+
+            <!-- Дії: CTA, кошик, гамбургер -->
+            <div class="flex items-center gap-3 md:gap-4">
+
+                <a href="#featured-pairing"
+                    class="hidden min-h-[44px] items-center justify-center rounded-lg bg-[#8c1c2b] px-6 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410] md:inline-flex">
+                    Start Pairing
+                </a>
+
+                <button type="button" aria-label="Кошик, 3 товари"
+                    class="relative inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-[#2a2118] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg>
+                    <span
+                        class="absolute -right-0.5 -top-0.5 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#8c1c2b] px-1 text-xs font-semibold text-white"
+                        aria-hidden="true">3</span>
+                </button>
+
+                <button id="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#3d342c] transition-colors duration-200 hover:bg-[#2a2118] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410] md:hidden">
+                    <svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+                        viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+                        viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобільне меню -->
+        <div id="mobile-menu" class="hidden border-t border-[#3d342c] md:hidden">
+            <nav aria-label="Мобільна навігація" class="mx-auto flex max-w-[1200px] flex-col gap-1 px-5 py-4">
+                <a href="#catalog"
+                    class="flex min-h-[44px] items-center rounded-md px-3 transition-colors duration-200 hover:bg-[#2a2118] hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec]">Каталог</a>
+                <a href="#featured-pairing"
+                    class="flex min-h-[44px] items-center rounded-md px-3 transition-colors duration-200 hover:bg-[#2a2118] hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec]">Пари</a>
+                <a href="#" aria-label="Виробники (сторінка ще не створена)"
+                    class="flex min-h-[44px] items-center rounded-md px-3 transition-colors duration-200 hover:bg-[#2a2118] hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec]">Виробники</a>
+                <a href="#" aria-label="Про нас (сторінка ще не створена)"
+                    class="flex min-h-[44px] items-center rounded-md px-3 transition-colors duration-200 hover:bg-[#2a2118] hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec]">Про нас</a>
+                <a href="#featured-pairing"
+                    class="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#8c1c2b] px-6 py-3 text-base font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">
+                    Start Pairing
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main об'єднує головний вміст сторінки для навігації та пошукових систем. -->
+    <main id="main">
+        <!-- HERO -->
+        <!-- HERO (Tailwind) -->
+        <section class="bg-[#2a2118] py-16" aria-labelledby="hero-title">
+            <div class="mx-auto grid w-full max-w-[1200px] items-center gap-12 px-5 lg:grid-cols-[1.2fr_1fr]">
+
+                <div>
+                    <p class="mb-3 text-xs tracking-widest text-[#a89d92]">ARTISAN CATALOG 2024</p>
+                    <h1 id="hero-title" class="mb-4 font-['Playfair_Display',Georgia,serif] text-4xl font-bold leading-[1.1] sm:text-5xl">
+                        Taste the Land.
+                        <span class="text-[#c4495a]">Pair with Purpose.</span>
+                    </h1>
+                    <p class="mb-6 max-w-[480px] text-[#a89d92]">
+                        Каталог крафтових сирів та вина з гастрономічним підбором пар.
+                    </p>
+
+                    <div class="mb-8 flex flex-wrap gap-3">
+                        <a href="#catalog"
+                            class="inline-flex w-full min-h-[44px] items-center justify-center rounded-lg bg-[#8c1c2b] px-6 py-3 text-base font-semibold text-white transition-colors duration-200 ease-in-out hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] sm:w-auto">
+                            Explore Catalog
+                        </a>
+                        <a href="#featured-pairing"
+                            class="inline-flex w-full min-h-[44px] items-center justify-center rounded-lg border border-[#f5f1ec] px-6 py-3 text-base transition-colors duration-200 ease-in-out hover:border-[#a89d92] hover:bg-[#3d342c] active:bg-[#1a1410] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] sm:w-auto">
+                            Open Pairing Engine
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap gap-5 sm:gap-8">
+                        <div>
+                            <div class="text-[28px] font-bold">48+</div>
+                            <div class="text-[13px] text-[#a89d92]">Artisan producers</div>
+                        </div>
+                        <div>
+                            <div class="text-[28px] font-bold">120</div>
+                            <div class="text-[13px] text-[#a89d92]">Cheeses &amp; wines</div>
+                        </div>
+                        <div>
+                            <div class="text-[28px] font-bold">36</div>
+                            <div class="text-[13px] text-[#a89d92]">Curated pairings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <article id="featured-pairing" aria-labelledby="featured-title"
+                    class="overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_6px_18px_rgba(0,0,0,0.45)]">
+                    <div class="relative h-[260px] bg-[#3d342c]">
+                        <img src="assets/images/hero_bg.jpg" alt="Сир бринза та бурштинове вино ркацителі на дерев'яній дошці"
+                            class="h-full w-full object-cover">
+                        <span class="absolute left-3 top-3 rounded bg-[#8c1c2b] px-2.5 py-1 text-xs text-white">Seasonal Pick</span>
+                    </div>
+                    <div class="p-5">
+                        <h2 class="mb-1 font-['Playfair_Display',Georgia,serif] text-xs text-[#a89d92]">Featured Pairing</h2>
+                        <h3 id="featured-title" class="mb-3 font-['Playfair_Display',Georgia,serif] text-[22px] font-bold">Brinza × Rkatsiteli Amber</h3>
+                        <div class="flex items-center justify-between gap-3">
+                            <p class="font-bold text-[#c4495a]">96 pts</p>
+                            <a href="#catalog"
+                                class="inline-flex min-h-[44px] items-center rounded text-[#c4495a] underline transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">Дивитись пару</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SENSORY NOTES -->
+        <!-- SENSORY NOTES (Tailwind) -->
+        <section class="border-b border-[#3d342c] py-8" aria-labelledby="sensory-title">
+            <div class="mx-auto w-full max-w-[1200px] px-5">
+                <h2 id="sensory-title" class="mb-3 font-['Playfair_Display',Georgia,serif] text-xs tracking-widest text-[#a89d92]">SENSORY NOTES</h2>
+                <div class="flex flex-wrap gap-2.5">
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🧂 Briny</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🌰 Nutty</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🍋 Citrus</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🍯 Honeyed</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🌿 Herbal</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🍒 Fruity</button>
+                    <button type="button" data-tag aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#c4495a] aria-pressed:bg-[#8c1c2b] aria-pressed:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">🪵 Oaky</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES / БЛОК ПЕРЕВАГ (Tailwind) -->
+        <section class="border-b border-[#3d342c] py-16" id="features" aria-labelledby="features-title">
+            <div class="mx-auto w-full max-w-[1200px] px-5">
+                <p class="mb-3 text-xs tracking-widest text-[#a89d92]">WHY TERROIR</p>
+                <h2 id="features-title" class="mb-8 font-['Playfair_Display',Georgia,serif] text-2xl font-bold sm:text-[32px]">Чому Terroir</h2>
+
+                <ul class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <li class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="flex h-40 items-center justify-center bg-[#f5f1ec] p-5 sm:h-44">
+                            <img src="assets/icons/icon_set1.svg" alt="" width="360" height="437" class="h-full w-auto max-w-full object-contain mix-blend-multiply" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-5">
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-xl font-bold text-[#f5f1ec]">Прозора логіка підбору</h3>
+                            <p class="text-sm leading-relaxed text-[#a89d92]">Ми не просто радимо пару, а пояснюємо, чому вона працює: як кислотність вина врівноважує жирність сиру.</p>
+                        </div>
+                    </li>
+                    <li class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="flex h-40 items-center justify-center bg-[#f5f1ec] p-5 sm:h-44">
+                            <img src="assets/icons/icon_set2.svg" alt="" width="371" height="398" class="h-full w-auto max-w-full object-contain mix-blend-multiply" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-5">
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-xl font-bold text-[#f5f1ec]">Смаковий квіз</h3>
+                            <p class="text-sm leading-relaxed text-[#a89d92]">Кілька простих питань про ваші вподобання, і каталог підлаштується під ваш особистий смаковий профіль.</p>
+                        </div>
+                    </li>
+                    <li class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="flex h-40 items-center justify-center bg-[#f5f1ec] p-5 sm:h-44">
+                            <img src="assets/icons/icon_set3.svg" alt="" width="632" height="559" class="h-full w-auto max-w-full object-contain mix-blend-multiply" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-5">
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-xl font-bold text-[#f5f1ec]">Карта теруару</h3>
+                            <p class="text-sm leading-relaxed text-[#a89d92]">Кожен продукт прив’язаний до регіону та виробника: видно, звідки походить сир і вино з однієї кліматичної зони.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CATALOG -->
+        <section class="py-16" id="catalog" aria-labelledby="catalog-title">
+            <div class="mx-auto w-full max-w-[1200px] px-5">
+
+                <div class="mb-6 flex items-end justify-between gap-4">
+                    <div>
+                        <p class="mb-3 text-xs tracking-widest text-[#a89d92]">FULL CATALOG</p>
+                        <h2 id="catalog-title" class="font-['Playfair_Display',Georgia,serif] text-2xl font-bold sm:text-[32px]">Cheese &amp; Wine</h2>
+                    </div>
+                    <p class="text-[#a89d92]">8 products</p>
+                </div>
+
+                <div class="mb-8 flex flex-wrap items-center gap-4">
+                    <div role="search"
+                        class="flex min-h-[44px] flex-1 basis-[280px] items-center gap-2 rounded-md border border-[#3d342c] px-3.5 transition-colors duration-200 focus-within:border-[#a89d92]">
+                        <span aria-hidden="true">🔍</span>
+                        <input type="search" aria-label="Пошук за назвою, регіоном або смаком"
+                            placeholder="Пошук за назвою, регіоном або смаком"
+                            class="w-full bg-transparent text-sm text-[#f5f1ec] placeholder:text-[#a89d92] focus:outline-none">
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button type="button" data-pill aria-pressed="true" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-4 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#f5f1ec] aria-pressed:bg-[#f5f1ec] aria-pressed:text-[#1a1410] aria-pressed:hover:bg-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">All</button>
+                        <button type="button" data-pill aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-4 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#f5f1ec] aria-pressed:bg-[#f5f1ec] aria-pressed:text-[#1a1410] aria-pressed:hover:bg-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Cheese</button>
+                        <button type="button" data-pill aria-pressed="false" class="inline-flex min-h-[44px] items-center rounded-full border border-[#3d342c] px-4 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] aria-pressed:border-[#f5f1ec] aria-pressed:bg-[#f5f1ec] aria-pressed:text-[#1a1410] aria-pressed:hover:bg-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Wine</button>
+                    </div>
+
+                    <button type="button" class="inline-flex min-h-[44px] items-center rounded-lg border border-[#f5f1ec] px-4 text-sm transition-colors duration-200 hover:border-[#a89d92] hover:bg-[#2a2118] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Filters</button>
+
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-[#a89d92]">Сортувати за</span>
+                        <button type="button" aria-label="Сортувати за популярністю"
+                            class="min-h-[44px] rounded px-1 font-semibold transition-colors duration-200 hover:text-[#c4495a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1410]">Популярністю</button>
+                    </div>
+                </div>
+
+                <!-- GRID (Tailwind): 1 колонка → sm: 2 → lg: 3 -->
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+                    <!-- Card 1 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-[#3d342c]">
+                            <img src="assets/images/products/brinza.jpg" alt="Бринза овеча" class="h-full w-full object-cover" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Cheese · Закарпаття</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Бринза овеча</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Briny</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Creamy</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">450 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-[#3d342c]">
+                            <img src="assets/images/products/rkatsiteli.jpg" alt="Ркацителі Amber" class="h-full w-full object-cover object-[center_80%]" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Wine · Кахетія</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Ркацителі Amber</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Honeyed</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Citrus</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">620 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-[#3d342c]">
+                            <img src="assets/images/products/hutsulsky-syr.jpg" alt="Гуцульський сир" class="h-full w-full object-cover" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Cheese · Карпати</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Гуцульський сир</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Nutty</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Smoky</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">380 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-white">
+                            <img src="assets/images/products/feteasca-bila.jpg" alt="Фетяска біла" class="h-full w-full object-contain p-2" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Wine · Закарпаття</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Фетяска біла</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Fruity</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Herbal</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">540 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-[#3d342c]">
+                            <img src="assets/images/products/goat-cheese-herbs.jpg" alt="Козячий сир з травами" class="h-full w-full object-cover" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Cheese · Одещина</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Козячий сир з травами</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Herbal</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Tangy</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">410 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-white">
+                            <img src="assets/images/products/cabernet.jpg" alt="Каберне витримане" class="h-full w-full object-contain p-2" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Wine · Одещина</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Каберне витримане</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Oaky</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Cherry</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">780 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 7 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-white">
+                            <img src="assets/images/products/hard-cheese-12m.jpg" alt="Твердий сир 12 місяців" class="h-full w-full object-contain p-2" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Cheese · Львівщина</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Твердий сир 12 міс.</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Nutty</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Salty</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">560 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 8 -->
+                    <article class="group flex flex-col overflow-hidden rounded-lg border border-[#3d342c] bg-[#2a2118] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition duration-200 ease-in-out hover:-translate-y-1 hover:border-[#a89d92] hover:shadow-[0_6px_18px_rgba(0,0,0,0.45)] focus-within:border-[#a89d92] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <div class="aspect-[4/3] overflow-hidden bg-white">
+                            <img src="assets/images/products/sparkling-brut.jpg" alt="Ігристе брют" class="h-full w-full object-contain p-2" loading="lazy">
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <p class="mb-1 text-xs text-[#a89d92]">Wine · Закарпаття</p>
+                            <h3 class="mb-2 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Ігристе брют</h3>
+                            <ul class="mb-4 flex flex-wrap gap-1.5">
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Crisp</li>
+                                <li class="rounded bg-[#3d342c] px-2 py-0.5 text-xs text-[#f5f1ec]">Citrus</li>
+                            </ul>
+                            <div class="mt-auto flex items-center justify-between gap-3">
+                                <p class="font-bold text-[#f5f1ec]">690 ₴</p>
+                                <button type="button" class="min-h-[44px] rounded-lg bg-[#8c1c2b] px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#a62436] active:bg-[#6f1521] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">В кошик</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Tailwind) -->
+    <footer class="border-t border-[#3d342c] bg-[#2a2118] font-['Inter',system-ui,sans-serif] text-[#a89d92]">
+        <div class="mx-auto w-full max-w-[1200px] px-5 pb-6 pt-12">
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+                <!-- 1. Логотип і опис -->
+                <section aria-labelledby="footer-brand-title">
+                    <a href="#"
+                        class="mb-4 inline-flex items-center gap-3 rounded-md transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">
+                        <img src="assets/icons/logo2.svg" alt="" class="h-14 w-14 shrink-0 rounded-lg bg-[#f5f1ec] object-contain p-0.5">
+                        <span class="flex flex-col">
+                            <span id="footer-brand-title" class="font-['Playfair_Display',Georgia,serif] text-2xl font-bold leading-none text-[#f5f1ec]">Terroir</span>
+                            <span class="mt-1 text-xs">Cheese &amp; Wine</span>
+                        </span>
+                    </a>
+                    <p class="max-w-xs text-sm leading-relaxed">
+                        Крафтові сири та вино з гастрономічним підбором пар.
+                    </p>
+                </section>
+
+                <!-- 2. Навігація -->
+                <nav aria-labelledby="footer-explore-title">
+                    <h2 id="footer-explore-title" class="mb-4 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Explore</h2>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#catalog"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Каталог</a>
+                        </li>
+                        <li>
+                            <a href="#featured-pairing"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Пари</a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Виробники (сторінка ще не створена)"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Виробники</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- 3. Корисні посилання -->
+                <nav aria-labelledby="footer-help-title">
+                    <h2 id="footer-help-title" class="mb-4 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Допомога</h2>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Доставка і оплата</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Умови повернення</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Часті запитання</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="inline-flex min-h-[44px] items-center rounded text-sm transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">Політика конфіденційності</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- 4. Контакти і соцмережі -->
+                <section aria-labelledby="footer-contact-title">
+                    <h2 id="footer-contact-title" class="mb-4 font-['Playfair_Display',Georgia,serif] text-lg font-bold text-[#f5f1ec]">Контакти</h2>
+                    <address class="not-italic">
+                        <ul class="space-y-1 text-sm">
+                            <li>
+                                <a href="mailto:hello@terroir.ua"
+                                    class="inline-flex min-h-[44px] items-center rounded transition-colors duration-200 hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118] md:min-h-0 md:py-1">hello@terroir.ua</a>
+                            </li>
+                            <li class="py-1">Івано-Франківська обл., Україна</li>
+                        </ul>
+                    </address>
+
+                    <ul class="mt-4 flex items-center gap-3" aria-label="Соцмережі">
+                        <li>
+                            <a href="#" aria-label="Terroir в Instagram"
+                                class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#3d342c] transition-colors duration-200 hover:border-[#a89d92] hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">
+                                <i class="fa-brands fa-instagram text-lg" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Terroir у Facebook"
+                                class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#3d342c] transition-colors duration-200 hover:border-[#a89d92] hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">
+                                <i class="fa-brands fa-facebook-f text-lg" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Terroir у Telegram"
+                                class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#3d342c] transition-colors duration-200 hover:border-[#a89d92] hover:text-[#f5f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f1ec] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2118]">
+                                <i class="fa-brands fa-telegram text-lg" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- Копірайт -->
+            <div class="mt-8 border-t border-[#3d342c] pt-4 text-sm">
+                <p>© 2024 Terroir. Усі права захищені.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Мобільне меню хедера -->
+    <script>
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = menu.classList.toggle('hidden') === false;
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            toggle.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+        });
+    </script>
+    <!-- Перемикання тегів (multi) та категорій (single) -->
+    <script>
+        document.querySelectorAll('[data-tag]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                btn.setAttribute('aria-pressed', String(btn.getAttribute('aria-pressed') !== 'true'));
+            });
+        });
+
+        const pills = document.querySelectorAll('[data-pill]');
+        pills.forEach((pill) => {
+            pill.addEventListener('click', () => {
+                pills.forEach((p) => p.setAttribute('aria-pressed', String(p === pill)));
+            });
+        });
+    </script>
+</body>
+
+</html>
